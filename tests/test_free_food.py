@@ -327,6 +327,15 @@ class Schedule(unittest.TestCase):
         busy = [{"start": datetime(2026, 10, 26, 19, 30, tzinfo=UTC), "end": datetime(2026, 10, 26, 20, 30, tzinfo=UTC), "title": "Call"}]
         self.assertEqual(ff.conflicts(e, busy), ["Call"])
 
+    def test_fit_whole_part_or_no(self):
+        e = ev(end=datetime(2026, 10, 26, 15, 0, tzinfo=AZ))  # 12:00-15:00
+        at = lambda h, m=0: datetime(2026, 10, 26, h, m, tzinfo=AZ)
+        self.assertEqual(ff.fit(e, [], AZ), {"fits": "whole"})
+        busy = [{"start": at(11), "end": at(12, 50), "title": "CHM"}, {"start": at(14), "end": at(16), "title": "Lab"}]
+        self.assertEqual(ff.fit(e, busy, AZ), {"fits": "part", "free_window": "12:50 PM–2:00 PM"})
+        busy = [{"start": at(11), "end": at(14, 50), "title": "Shift"}]
+        self.assertEqual(ff.fit(e, busy, AZ), {"fits": "no"})  # 10 free minutes is not a fit
+
 
 class Command(unittest.TestCase):
     BUSY = str(SKILL / "assets/sample_busy.json")

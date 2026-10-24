@@ -35,7 +35,9 @@ How it decides:
   count. Engage's own "Free Food" perk counts on its own.
 - **Who can go:** audience tags, honors or residence-hall events, members-only wording, the platform's
   own restrictions, sold out, registration closed, and ticket prices.
-- **Your schedule:** your Google Calendar and Canvas classes, when they're connected.
+- **Your schedule:** your Google Calendar and Canvas classes, or what you tell it when neither is connected.
+  Each event says whether it fits whole, in part (with the free stretch) or not, and Cubbie offers to put
+  the one you pick on your calendar.
 
 It saves nothing between runs.
 

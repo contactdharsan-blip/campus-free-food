@@ -154,6 +154,22 @@ def conflicts(ev: dict, busy: list[dict]) -> list[str]:
     return [b.get("title") or "busy" for b in busy if b["start"] < ev["end"] and ev["start"] < b["end"]]
 
 
+def fit(ev: dict, busy: list[dict], tz) -> dict:
+    """How the event fits the schedule: 'whole', 'part' with the longest free stretch (20+ minutes), or 'no'."""
+    clash = sorted((b for b in busy if b["start"] < ev["end"] and ev["start"] < b["end"]), key=lambda b: b["start"])
+    if not clash:
+        return {"fits": "whole"}
+    best, at = (timedelta(0), None, None), ev["start"]
+    for b in clash + [{"start": ev["end"], "end": ev["end"]}]:
+        if b["start"] - at > best[0]:
+            best = (b["start"] - at, at, b["start"])
+        at = max(at, b["end"])
+    if best[0] < timedelta(minutes=20):
+        return {"fits": "no"}
+    lo, hi = best[1].astimezone(tz), best[2].astimezone(tz)
+    return {"fits": "part", "free_window": lo.strftime("%-I:%M %p") + "–" + hi.strftime("%-I:%M %p")}
+
+
 def load_busy(path: Optional[str], tz) -> list[dict]:
     if not path:
         return []
@@ -190,12 +206,14 @@ def report(events: list[dict], me: argparse.Namespace, busy: list[dict]) -> list
             "eligible": verdict,
             "why": reasons,
             "conflicts_with": conflicts(ev, busy),
+            **(fit(ev, busy, me.tz) if busy else {}),
             "spots_left": ev.get("spots_left"),
             "link": ev.get("url", ""),
         })
     rank = {"yes": 0, "check": 1, "no": 2}
     away = lambda f: any(r.startswith("on the ") for r in f["why"])  # another campus is a trip, not a no
-    found.sort(key=lambda f: (bool(f["conflicts_with"]), rank[f["eligible"]], away(f), not f["food_certain"], f["start"]))
+    fits = {"whole": 0, "part": 1, "no": 2}
+    found.sort(key=lambda f: (fits.get(f.get("fits"), 0), rank[f["eligible"]], away(f), not f["food_certain"], f["start"]))
     return found
 
 

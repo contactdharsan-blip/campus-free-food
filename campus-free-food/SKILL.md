@@ -41,12 +41,13 @@ Do not use it for dining hall menus, meal plans or restaurants.
    - Pass the student's local date and time with its UTC offset as `--now` (for example
      `2026-10-24T13:00-07:00`), and their time zone as `--tz` (for example `America/Chicago`). Don't use
      the sandbox clock; it may be in another time zone.
-3. **Busy times.**
+3. **Busy times.** The point is food that fits the student's day, so always check their schedule.
    - Read the student's Google Calendar events for the window, plus their class times from Canvas if
      Canvas is connected.
+   - If neither is connected, ask one question before running: "When are you busy? (classes, work,
+     anything fixed)". Use what they say. If they'd rather not say, leave out `--busy` and say that the
+     results were not checked against their schedule.
    - Write them to `busy.json` as a list of `{"start": "<ISO time>", "end": "<ISO time>", "title": "<name>"}`.
-   - If neither account is connected, leave out `--busy`, and say that the results were not checked
-     against their schedule.
 4. **Run** from this Skill's folder.
 
    a. For a site the script reads:
@@ -75,21 +76,27 @@ Do not use it for dining hall menus, meal plans or restaurants.
    - `food`: the description's own sentence about food;
    - `eligible`: `yes` or `check`, and `why`;
    - `conflicts_with`: the busy items it overlaps;
+   - `fits` (only with `--busy`): `whole` (no overlap), `part` (overlaps, but `free_window` is a free
+     stretch of 20 minutes or more inside the event) or `no`;
    - `started`: true if it began before `--now`.
 
    Events come sorted with open, schedule-fitting ones first.
-5. **Reply** (see Replies). Then offer one follow-up and do it only after the student says yes:
-   - a reminder 30 minutes before the event they pick;
-   - or adding that event to their Google Calendar.
+5. **Reply** (see Replies). Then offer to fit the one they pick into their schedule, and do it only
+   after the student says yes:
+   - add it to their Google Calendar, for the `free_window` when `fits` is `part`;
+   - or, without Google Calendar, a reminder 30 minutes before it starts.
 
 To try it without the network: `python3 scripts/free_food.py --sample --busy assets/sample_busy.json`.
 
 ## Replies
 
 - Short, plain text, no Markdown.
-- Lead with the best one to three events that are `eligible: yes` and have no `conflicts_with`.
+- Lead with the best one to three events that are `eligible: yes` and `fits: whole`. If there are none,
+  use `fits: part` ones.
 - For each event:
   - one line with the name, day and time, and place;
+  - one line on how it fits the day, from `busy.json`: "Free then: right after CHM 113" or, for
+    `part`, "You can make 12:50–2:00, after CHM 113";
   - one line quoting the food sentence (shortened if long);
   - the link on its own line.
 - After those, one line naming the `check` events and why ("2 more are for one residence hall"), and one
@@ -104,11 +111,12 @@ Example:
 Free food that fits your day:
 
 Pizza and Pitches, Mon 12–1 PM, Memorial Union 202
+Free then: right after CHM 113
 "Free pizza will be provided for everyone who comes!"
 https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900001
 
-Also: an honors-only Halloween social Tue night, and Taco Tuesday clashes with your lab.
-Want a reminder at 11:30?
+Also: an honors-only Halloween social Tue night, and you can make 3–4:30 of Taco Tuesday before your lab.
+Want me to put Pizza and Pitches on your calendar?
 ```
 
 ## When something fails
