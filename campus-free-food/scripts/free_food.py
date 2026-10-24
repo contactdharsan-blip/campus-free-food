@@ -44,8 +44,9 @@ FOOD = re.compile(
 # Food that is not free food for the student: donating it, selling it, packing it, studying it, or bringing it.
 NOT_FREE = re.compile(
     r"\b(food drive|donat\w*|canned (?:food|goods)|non-?perishable|for sale|for purchase|"
-    r"available to purchase|bake sale|fundrais\w*|bring (?:a|your own|some) (?:snack|dish|food|lunch)|"
+    r"available to purchase|bake sale|fundrais\w*|bring (?:a|your own|some) (?:\w+ )?(?:snack|dish|food|lunch)|"
     r"potluck|food insecurity awareness|delivered to children|pack(?:ing)? (?:\w+ )?meals|meal[- ]packing|"
+    r"repackag\w*|uneaten|happy meal|access to (?:\w+ ){0,4}food|"
     r"hope starts with food|feed (?:the|those|families|kids|children)|hunger|food bank|food pantry donations|"
     r"food (?:distribution|insecurity|security|systems?|science|justice|waste|sustainab\w*|policy|access|"
     r"recovery|rescue|industry|studies|for thought)|eye candy|"
@@ -53,6 +54,10 @@ NOT_FREE = re.compile(
     r"not (?:be )?provided|bring your own)\b",
     re.I,
 )
+# A food word inside a place's name ("at C3 (by Eden Coffee)") is not food. Case-sensitive on purpose.
+PLACE = re.compile(r"\b(?:at|by|near|from) (?:[A-Z][\w'&]*\s)+(?:Coffee|Cafe|Café|Kitchen|Bakery|Pizza)\b")
+# A time range in the food sentence ("12:30 PM – 1:00 PM: Lunch"), to tell when the food is over.
+FOOD_TIME = re.compile(r"\d{1,2}(?::\d\d)?\s*[AP]\.?M\.?\s*[–-]\s*(\d{1,2})(?::(\d\d))?\s*([AP])\.?M\.?", re.I)
 STRONG = re.compile(r"\b(free food|food (?:will be |is )?(?:provided|served)|free \w+|provided|served|catered|catering|complimentary)\b", re.I)
 MEMBERS_TEXT = re.compile(r"\b(?:(?i:for (?:club |chapter )?members|members only|invite[- ]only|by invitation)|(?i:members of) (?!the\b|our\b|all\b|any\b)[A-Z][\w&']+)")
 OPEN_TEXT = re.compile(r"\b(open to (?:all|everyone|any)|everyone is welcome|all are welcome|all students)\b", re.I)
@@ -74,7 +79,7 @@ def food_evidence(name: str, description: str, flag: Optional[str] = None) -> Op
     A platform's own free-food label (`flag`) is certain on its own."""
     best = None
     for s in [name] + sentences(description):
-        if not FOOD.search(s) or NOT_FREE.search(s):
+        if not FOOD.search(PLACE.sub("", s)) or NOT_FREE.search(s):
             continue
         score = 2 if STRONG.search(s) else 1
         if best is None or score > best[0]:
@@ -150,6 +155,16 @@ def eligibility(ev: dict, me: argparse.Namespace) -> tuple[str, list[str]]:
 
 # ---------- schedule ----------
 
+def food_over(quote: Optional[str], start: datetime, now: datetime) -> bool:
+    """True when the food sentence gives a time range that ended before `now` on the event's first day."""
+    m = FOOD_TIME.search(quote or "")
+    if not m:
+        return False
+    day = start.astimezone(now.tzinfo)
+    end = day.replace(hour=int(m[1]) % 12 + (12 if m[3].upper() == "P" else 0), minute=int(m[2] or 0), second=0, microsecond=0)
+    return end <= now
+
+
 def conflicts(ev: dict, busy: list[dict]) -> list[str]:
     return [b.get("title") or "busy" for b in busy if b["start"] < ev["end"] and ev["start"] < b["end"]]
 
@@ -188,6 +203,11 @@ def report(events: list[dict], me: argparse.Namespace, busy: list[dict]) -> list
     for ev in events:
         food = food_evidence(ev["name"], ev.get("description", ""), ev.get("food_flag"))
         if not food:
+            continue
+        price = (ev.get("price") or "").strip().upper()
+        if price not in ("", "FREE", "0", "$0", "0.00") and not food["certain"]:
+            continue  # a ticketed event that only mentions food (a play about a pie shop) is not free food
+        if ev["start"] < me.now and food_over(food["quote"], ev["start"], me.now):
             continue
         verdict, reasons = eligibility(ev, me)
         if verdict == "no" and not me.show_ineligible:
@@ -323,7 +343,7 @@ def main(argv: Optional[list[str]] = None) -> int:
         emit({"error": "the event site's format changed: " + e.__class__.__name__})
         return 4
 
-    events = [e for e in events if e["end"] >= start and e["start"] <= end]
+    events = [e for e in events if e["end"] > start and e["start"] <= end]  # one that ends now is over
     found = report(events, me, busy)
     out = {
         "platform": platform,

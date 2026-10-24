@@ -270,6 +270,18 @@ class Food(unittest.TestCase):
                   "A musical full of eye candy."]:
             self.assertIsNone(ff.food_evidence("Event", s), s)
 
+    def test_live_false_positives_from_2026_10_24(self):
+        for s in ["The Campus Kitchen Project is an organization that repackages uneaten dining hall food, and brings it "
+                  "to Klemis Kitchen for GT students in need.",
+                  "Volunteering with the Campus Kitchen Project helps ensure that GT students have access to affordable "
+                  "and healthy food!",
+                  "Bring a picnic lunch and join the Poetry from Many Worlds Initiative.",
+                  "The English Corner Club will meet for conversation and community each Saturday from 10-11:15 at C3 "
+                  "(by Eden Coffee).",
+                  "She most recently directed the BT21 Happy Meal commercial and socials for McDonalds."]:
+            self.assertIsNone(ff.food_evidence("Event", s), s)
+        self.assertIsNotNone(ff.food_evidence("Event", "Meet at Dutch Bros Coffee for free coffee."))
+
     def test_long_sentence_quote_keeps_the_food_word(self):
         self.assertIn("snacks", ff.food_evidence("Event", "x " * 150 + "and eat snacks with us!")["quote"])
 
@@ -326,6 +338,29 @@ class Schedule(unittest.TestCase):
         e = ev()  # 12:00-13:00 Arizona = 19:00-20:00 UTC
         busy = [{"start": datetime(2026, 10, 26, 19, 30, tzinfo=UTC), "end": datetime(2026, 10, 26, 20, 30, tzinfo=UTC), "title": "Call"}]
         self.assertEqual(ff.conflicts(e, busy), ["Call"])
+
+    def test_food_time_already_over(self):
+        start, at = datetime(2026, 10, 24, 10, tzinfo=AZ), lambda h: datetime(2026, 10, 24, h, tzinfo=AZ)
+        quote = "• 12:30 PM – 1:00 PM: Lunch (Provided at Accel)"
+        self.assertTrue(ff.food_over(quote, start, at(14)))
+        self.assertFalse(ff.food_over(quote, start, at(12)))
+        self.assertFalse(ff.food_over("Lunch provided.", start, at(14)))
+
+    def test_ended_paid_and_past_food_events_are_left_out(self):
+        p = FIX / "tmp_events.json"
+        p.write_text(json.dumps([
+            {"name": "Ends now", "start": "2026-10-24T11:00", "end": "2026-10-24T14:00", "description": "Free pizza!"},
+            {"name": "Play", "start": "2026-10-24T19:30", "price": "$19-$62", "description": "Lovett and her struggling pie shop."},
+            {"name": "Lab tour", "start": "2026-10-24T10:00", "end": "2026-10-24T17:30",
+             "description": "• 12:30 PM – 1:00 PM: Lunch (Provided at Accel)"},
+            {"name": "Gala", "start": "2026-10-24T18:00", "price": "$10", "description": "Dinner will be provided."}]))
+        try:
+            code, out = run("--events-file", str(p), "--now", "2026-10-24T14:00", "--tz", "America/Phoenix")
+        finally:
+            p.unlink()
+        self.assertEqual(code, 0)
+        self.assertEqual([e["name"] for e in out["events"]], ["Gala"])  # paid but promises food: listed, marked check
+        self.assertEqual(out["events"][0]["eligible"], "check")
 
     def test_fit_whole_part_or_no(self):
         e = ev(end=datetime(2026, 10, 26, 15, 0, tzinfo=AZ))  # 12:00-15:00
