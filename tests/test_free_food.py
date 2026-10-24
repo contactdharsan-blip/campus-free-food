@@ -364,9 +364,15 @@ class Schedule(unittest.TestCase):
         self.assertFalse(ff.food_over("Free food 10 PM - 1 AM", at(24, 22), at(24, 23, 59), at(24, 23)))
         self.assertFalse(ff.food_over("Lunch provided daily, 11:30 AM - 1 PM.", at(23, 9), at(25, 17), at(24, 12)))
         self.assertFalse(ff.food_over("Talk 8 PM - 9 PM, followed by free dinner.", at(24, 20), at(24, 22), at(24, 21, 30)))
+        self.assertFalse(ff.food_over("Snacks 3 PM - 3:15 PM, and more snacks 4:30 PM - 4:45 PM", at(24, 14), at(24, 18), at(24, 16)))
         # The clock in the food sentence is the event's own: an Arizona lunch read at 2 PM Eastern is not over.
         east = datetime(2026, 10, 24, 14, tzinfo=pf.zone("America/New_York"))
         self.assertFalse(ff.food_over("Lunch 12 PM - 1 PM", at(24, 10), at(24, 15), east))
+        # Engage stores UTC: an Iowa event 11:00-14:00 CDT is 16:00-19:00 UTC, and lunch is on at 11:30 CDT.
+        cdt = pf.zone("America/Chicago")
+        utc = lambda h: datetime(2026, 10, 24, h, tzinfo=UTC)
+        self.assertFalse(ff.food_over("Lunch 11 AM - 1 PM, free for everyone.", utc(16), utc(19), datetime(2026, 10, 24, 11, 30, tzinfo=cdt)))
+        self.assertTrue(ff.food_over("Lunch 11 AM - 1 PM, free for everyone.", utc(16), utc(19), datetime(2026, 10, 24, 13, 30, tzinfo=cdt)))
 
     def test_ended_paid_and_past_food_events_are_left_out(self):
         p = FIX / "tmp_events.json"

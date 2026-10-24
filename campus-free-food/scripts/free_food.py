@@ -157,24 +157,27 @@ def eligibility(ev: dict, me: argparse.Namespace) -> tuple[str, list[str]]:
 # ---------- schedule ----------
 
 def food_over(quote: Optional[str], start: datetime, end: datetime, now: datetime) -> bool:
-    """True when the food has its own time ("12:30 PM – 1:00 PM: Lunch") and that time is past.
+    """True when the food has its own times ("12:30 PM – 1:00 PM: Lunch") and all of them are past.
     Only for a one-day event, only when the range sits right next to the food word, and never across
     midnight; anything else keeps the event."""
     quote = quote or ""
-    m = FOOD_TIME.search(quote)
-    if not m or start.date() != end.date():
+    zone = start.tzinfo if start.utcoffset() else now.tzinfo  # feeds that store UTC (Engage, iCal "Z") mean campus time
+    start, end = start.astimezone(zone), end.astimezone(zone)
+    if start.date() != end.date():
         return False
     gap = r"[\s:()–-]{0,3}"
-    after = re.match(gap + "(?:" + FOOD.pattern + ")", quote[m.end():], re.I)
-    before = re.search("(?:" + FOOD.pattern + ")" + gap + "$", quote[:m.start()], re.I)
-    if not (after or before):
-        return False
     hour = lambda h, ap: int(h) % 12 + (12 if ap.upper() == "P" else 0)
-    lo, hi = (hour(m[1], m[3]), int(m[2] or 0)), (hour(m[4], m[6]), int(m[5] or 0))
-    if hi <= lo:
-        return False  # runs past midnight
-    return start.replace(hour=hi[0], minute=hi[1], second=0, microsecond=0) <= now  # in the event's own zone
-
+    ends = []
+    for m in FOOD_TIME.finditer(quote):
+        after = re.match(gap + "(?:" + FOOD.pattern + ")", quote[m.end():], re.I)
+        before = re.search("(?:" + FOOD.pattern + ")" + gap + "$", quote[:m.start()], re.I)
+        if not (after or before):
+            continue
+        lo, hi = (hour(m[1], m[3]), int(m[2] or 0)), (hour(m[4], m[6]), int(m[5] or 0))
+        if hi <= lo:
+            return False  # runs past midnight
+        ends.append(start.replace(hour=hi[0], minute=hi[1], second=0, microsecond=0))
+    return bool(ends) and max(ends) <= now  # over only when every food time is
 
 def conflicts(ev: dict, busy: list[dict]) -> list[str]:
     return [b.get("title") or "busy" for b in busy if b["start"] < ev["end"] and ev["start"] < b["end"]]
@@ -215,7 +218,8 @@ def report(events: list[dict], me: argparse.Namespace, busy: list[dict]) -> list
         food = food_evidence(ev["name"], ev.get("description", ""), ev.get("food_flag"))
         if not food:
             continue
-        if PAID.search(ev.get("price") or "") and not food["certain"]:
+        price = ev.get("price") or ""
+        if PAID.search(price) and "free" not in price.lower() and not food["certain"]:
             continue  # a ticketed event that only mentions food (a play about a pie shop) is not free food
         if ev["start"] < me.now and food_over(food["quote"], ev["start"], ev["end"], me.now):
             continue
