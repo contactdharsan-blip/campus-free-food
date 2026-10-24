@@ -48,6 +48,7 @@ Do not use it for dining hall menus, meal plans or restaurants.
      anything fixed. Or say free". Use what they say; "free" is an empty list. If they'd rather not say,
      leave out `--busy` and say that the results were not checked against their schedule.
    - Write them to `busy.json` as a list of `{"start": "<ISO time>", "end": "<ISO time>", "title": "<name>"}`.
+     Leave out all-day items (holidays, reminders, "out of office"); they would block the whole day.
 4. **Run** from this Skill's folder.
 
    a. For a site the script reads:
