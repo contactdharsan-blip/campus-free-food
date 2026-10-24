@@ -54,3 +54,9 @@ Live, against the commit before (`2e99ac0`): ASU 79 → 76 food events over 7 da
 Happy Meal lines), Boulder 3 → 1, Stanford 1 → 0, Georgia Tech 6 → 5, Iowa unchanged. Still matched: Iowa's
 "...depart to go back to Iowa City, meals, and emergencies". Debatable drops: "Meet the Dean at Morning
 Coffee". These changes have not been run on Cubbie.
+
+## 2026-10-24 15:36: re-test on Cubbie, no answer
+
+The branch link was texted again at 15:36:25 to pick up the schedule-fit and false-match changes (main at
+`4f02cb0`). iMessage showed it delivered. Cubbie had not replied by 15:49, and nothing arrived in any other
+chat. No further texts were sent. The near-miss and "What Skills do I have?" checks are still not run.
