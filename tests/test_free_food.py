@@ -282,6 +282,16 @@ class Food(unittest.TestCase):
             self.assertIsNone(ff.food_evidence("Event", s), s)
         self.assertIsNotNone(ff.food_evidence("Event", "Meet at Dutch Bros Coffee for free coffee."))
 
+    def test_real_free_food_the_narrow_rules_keep(self):
+        for name, s in [("Event", "All attendees get access to free food and drinks."),
+                        ("Event", "Students have access to free hot food all day"),
+                        ("Event", "Enjoy unlimited access to snacks and food."),
+                        ("Movie Night at Memorial Union With Free Pizza", "Come watch a movie."),
+                        ("Study Break at Hayden Library With Pizza", ""),
+                        ("Event", "Free lunch at Engineering Center Kitchen"),
+                        ("Event", "Bring a friend lunch is on us")]:
+            self.assertIsNotNone(ff.food_evidence(name, s), name + " | " + s)
+
     def test_long_sentence_quote_keeps_the_food_word(self):
         self.assertIn("snacks", ff.food_evidence("Event", "x " * 150 + "and eat snacks with us!")["quote"])
 
@@ -340,11 +350,23 @@ class Schedule(unittest.TestCase):
         self.assertEqual(ff.conflicts(e, busy), ["Call"])
 
     def test_food_time_already_over(self):
-        start, at = datetime(2026, 10, 24, 10, tzinfo=AZ), lambda h: datetime(2026, 10, 24, h, tzinfo=AZ)
+        at = lambda d, h, m=0: datetime(2026, 10, d, h, m, tzinfo=AZ)
         quote = "• 12:30 PM – 1:00 PM: Lunch (Provided at Accel)"
-        self.assertTrue(ff.food_over(quote, start, at(14)))
-        self.assertFalse(ff.food_over(quote, start, at(12)))
-        self.assertFalse(ff.food_over("Lunch provided.", start, at(14)))
+        self.assertTrue(ff.food_over(quote, at(24, 10), at(24, 17, 30), at(24, 14)))
+        self.assertFalse(ff.food_over(quote, at(24, 10), at(24, 17, 30), at(24, 12)))
+        self.assertFalse(ff.food_over("Lunch provided.", at(24, 10), at(24, 17), at(24, 14)))
+        self.assertTrue(ff.food_over("Lunch 11 AM - 1 PM", at(24, 10), at(24, 17), at(24, 14)))
+
+    def test_food_time_keeps_events_whose_food_may_still_be_on(self):
+        at = lambda d, h, m=0: datetime(2026, 10, d, h, m, tzinfo=AZ)
+        # From the 2026-10-24 verifier: food past midnight, daily food at a multi-day event, a range for the talk.
+        self.assertFalse(ff.food_over("Free pancakes 8 PM - 12 AM in the dining hall.", at(24, 20), at(25, 0, 30), at(24, 21)))
+        self.assertFalse(ff.food_over("Free food 10 PM - 1 AM", at(24, 22), at(24, 23, 59), at(24, 23)))
+        self.assertFalse(ff.food_over("Lunch provided daily, 11:30 AM - 1 PM.", at(23, 9), at(25, 17), at(24, 12)))
+        self.assertFalse(ff.food_over("Talk 8 PM - 9 PM, followed by free dinner.", at(24, 20), at(24, 22), at(24, 21, 30)))
+        # The clock in the food sentence is the event's own: an Arizona lunch read at 2 PM Eastern is not over.
+        east = datetime(2026, 10, 24, 14, tzinfo=pf.zone("America/New_York"))
+        self.assertFalse(ff.food_over("Lunch 12 PM - 1 PM", at(24, 10), at(24, 15), east))
 
     def test_ended_paid_and_past_food_events_are_left_out(self):
         p = FIX / "tmp_events.json"
@@ -361,6 +383,12 @@ class Schedule(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertEqual([e["name"] for e in out["events"]], ["Gala"])  # paid but promises food: listed, marked check
         self.assertEqual(out["events"][0]["eligible"], "check")
+
+    def test_free_or_unclear_prices_do_not_drop_weak_food(self):
+        for price in ["$0.00", "Free for students", "Free!", "0.0", "Donation", "Varies"]:
+            self.assertFalse(ff.PAID.search(price), price)
+        for price in ["$19-$62", "$10", "$ 5", "15 USD"]:
+            self.assertTrue(ff.PAID.search(price), price)
 
     def test_fit_whole_part_or_no(self):
         e = ev(end=datetime(2026, 10, 26, 15, 0, tzinfo=AZ))  # 12:00-15:00
