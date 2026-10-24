@@ -8,7 +8,7 @@ Cubbie fetched commit `f66ba6c`. The schedule-fit changes (`7b6d7c1` onward) hav
 | # | Sent | Cubbie's reply | Result |
 |---|---|---|---|
 | 1 | The branch link `…/tree/main/campus-free-food` | Said what the Skill is and what it reads ("Sun Devil Central's public feed without signing in"), and asked before installing third-party code | Pass |
-| 2 | "yes" | About 5 minutes later: "Installed and ran it — three public events have confirmed food today, with no conflicts showing in your Google or Canvas schedule". Gave the best pick with its food quote and link, then two more, each with a quote and its time | Pass |
+| 2 | "yes" | "On it—give me a moment." 5 seconds later (13:52:12); then, about 5 minutes later: "Installed and ran it — three public events have confirmed food today, with no conflicts showing in your Google or Canvas schedule". Gave the best pick with its food quote and link, then two more, each with a quote and its time | Pass |
 | — | A follow-up from the student: "can you check my schedule and hw to see if I can fit it in" | Checked Google Calendar and Canvas due dates, suggested a homework block and a window to go | Pass (Cubbie's own planning on top of the Skill) |
 
 What it showed:
