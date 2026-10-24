@@ -351,6 +351,19 @@ class Command(unittest.TestCase):
         self.assertEqual(by["Taco Tuesday Study Hall"]["conflicts_with"], ["BIO 181 lab (example)"])
         self.assertTrue(out["schedule_checked"])
         self.assertEqual(out["events"][0]["name"], "Downtown Donut Day")
+        self.assertEqual(out["events"][0]["fits"], "whole")  # the SKILL.md example reply leads with it
+        self.assertEqual(by["Pizza and Pitches"]["fits"], "no")
+        self.assertEqual(by["Taco Tuesday Study Hall"]["free_window"], "3:00 PM–4:30 PM")
+
+    def test_empty_schedule_still_fits(self):
+        p = FIX / "tmp_busy.json"
+        p.write_text("[]")
+        try:
+            _, out = run("--sample", "--busy", str(p))
+        finally:
+            p.unlink()
+        self.assertTrue(out["schedule_checked"])
+        self.assertEqual({e["fits"] for e in out["events"]}, {"whole"})
 
     def test_same_campus_ranks_before_another_campus(self):
         _, out = run("--sample", "--campus", "tempe", "--days", "3")

@@ -206,7 +206,7 @@ def report(events: list[dict], me: argparse.Namespace, busy: list[dict]) -> list
             "eligible": verdict,
             "why": reasons,
             "conflicts_with": conflicts(ev, busy),
-            **(fit(ev, busy, me.tz) if busy else {}),
+            **(fit(ev, busy, me.tz) if getattr(me, "busy", None) else {}),  # a schedule was given, even an empty one
             "spots_left": ev.get("spots_left"),
             "link": ev.get("url", ""),
         })
