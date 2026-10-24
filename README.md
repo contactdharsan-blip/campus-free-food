@@ -13,7 +13,7 @@ fit your schedule. It quotes the line in each event's description that promises 
 Text Cubbie the link to the Skill folder:
 
 ```text
-https://github.com/<owner>/campus-free-food/tree/main/campus-free-food
+https://github.com/contactdharsan-blip/campus-free-food/tree/main/campus-free-food
 ```
 
 Cubbie asks before it fetches it; reply "yes". Then ask it for free food.
