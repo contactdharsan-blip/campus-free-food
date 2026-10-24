@@ -40,3 +40,17 @@ Food matches read by hand: most are real. Wrong or weak ones seen: "Bring a picn
 "by Eden Coffee" (a place name), "the BT21 Happy Meal commercial" (a speaker's bio), "give-pie to the
 President's face", and "sometimes bring snacks". The kit caps the script's output at 7,500 characters, so a
 7-day ASU run shows about 14 of the 79.
+
+## 2026-10-24: false-match fixes (`2f10796`, `ebdc6c6`, `d902fe7`), script only
+
+Dropped now: an event that ends exactly at `--now`; a started one-day event whose food time ("12:30 PM –
+1:00 PM: Lunch") is past; a ticketed event with only a passing food word; repackaged food, "access to
+affordable food", "bring a picnic lunch", "Happy Meal"; a food word inside a short place name ("by Eden
+Coffee"). An agent verifier refuted the first two versions (they hid food past midnight, daily lunch at
+multi-day events, "access to free food", Title-Case names with "Free Pizza", and read UTC feed times on the
+UTC clock), then confirmed `d902fe7`. 57 tests OK on Python 3.14 and 3.9; kit validator OK.
+
+Live, against the commit before (`2e99ac0`): ASU 79 → 76 food events over 7 days (the picnic, Eden Coffee and
+Happy Meal lines), Boulder 3 → 1, Stanford 1 → 0, Georgia Tech 6 → 5, Iowa unchanged. Still matched: Iowa's
+"...depart to go back to Iowa City, meals, and emergencies". Debatable drops: "Meet the Dean at Morning
+Coffee". These changes have not been run on Cubbie.
