@@ -60,3 +60,9 @@ Coffee". These changes have not been run on Cubbie.
 The branch link was texted again at 15:36:25 to pick up the schedule-fit and false-match changes (main at
 `4f02cb0`). iMessage showed it delivered. Cubbie had not replied by 15:49, and nothing arrived in any other
 chat. No further texts were sent. The near-miss and "What Skills do I have?" checks are still not run.
+
+Likely not the Skill. The hackathon Discord's Cubbie channel had, read at about 15:55 MST: an organizer note
+at 14:37 MST that Cubbie fails with "I couldn't finish the previous request…" on HEIC photos, "JPG not
+working for me either" at 14:49, and at 15:50 "Is anyone not receiving messages from Cubbie?". Reports of
+Cubbie going silent from about 14:10 come from the Backglass session's reading; only 12 recent messages were
+loaded here, so that part isn't re-checked.
