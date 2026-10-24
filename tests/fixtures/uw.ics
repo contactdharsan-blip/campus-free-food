@@ -76,7 +76,7 @@ X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Sin
 X-TRUMBA-CUSTOMFIELD;NAME="Campus location";ID=30032;TYPE=CustomAsset:In
  tramural Activities Building (IMA)
 X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
- ne:kec1991@uw.edu
+ ne:a11yex1@uw.edu
 X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Athlet
  ics\,Diversity Equity Inclusion\,Student Activities
 X-TRUMBA-CUSTOMFIELD;NAME="Event sponsors";ID=30383;TYPE=MultiLine:UW Ad
@@ -87,7 +87,7 @@ X-TRUMBA-CUSTOMFIELD;NAME="Target Audience";ID=42285;TYPE=SingleLine:UW
  nt to play and support
 DTSTAMP:20261008T090536Z
 DESCRIPTION:Event interval: Single day event\nCampus location: Intramura
- l Activities Building (IMA)\nAccessibility Contact: kec1991@uw.edu\nEven
+ l Activities Building (IMA)\nAccessibility Contact: a11yex1@uw.edu\nEven
  t Types: Athletics\,Diversity Equity Inclusion\,Student Activities\nEven
  t sponsors: <a href="https://www.washington.edu/ima/intramurals/adaptive
  -sports-recreation/" target="_blank" dir="ltr">UW Adaptive Sports and Re
@@ -269,12 +269,12 @@ X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Generic UW Even
 X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Ong
  oing event
 X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
- ne:murphyh4@uw.edu
+ ne:a11yex02@uw.edu
 X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Not Sp
  ecified
 DTSTAMP:20261018T023118Z
-DESCRIPTION:Event interval: Ongoing event\nAccessibility Contact: murphy
- h4@uw.edu\nEvent Types: Not Specified\nLink: https://wholeu.admin.washin
+DESCRIPTION:Event interval: Ongoing event\nAccessibility Contact: a11yex
+ 02@uw.edu\nEvent Types: Not Specified\nLink: https://wholeu.admin.washin
  gton.edu/uwnetid/twuext/EventDetail.aspx?regid=&eventid=1160&eventsessio
  nid=\n\nThese mini movement sessions are great for re-energizing your da
  y. Sessions are open to all levels and will include a mix of strength tr
