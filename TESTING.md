@@ -48,7 +48,7 @@ Dropped now: an event that ends exactly at `--now`; a started one-day event whos
 affordable food", "bring a picnic lunch", "Happy Meal"; a food word inside a short place name ("by Eden
 Coffee"). An agent verifier refuted the first two versions (they hid food past midnight, daily lunch at
 multi-day events, "access to free food", Title-Case names with "Free Pizza", and read UTC feed times on the
-UTC clock), then confirmed `d902fe7`. 57 tests OK on Python 3.14 and 3.9; kit validator OK.
+UTC clock), then confirmed `d902fe7`. 55 tests OK (`python3 -m unittest discover -s tests`, local) on Python 3.14 and 3.9; kit validator OK.
 
 Live, against the commit before (`2e99ac0`): ASU 79 → 76 food events over 7 days (the picnic, Eden Coffee and
 Happy Meal lines), Boulder 3 → 1, Stanford 1 → 0, Georgia Tech 6 → 5, Iowa unchanged. Still matched: Iowa's
