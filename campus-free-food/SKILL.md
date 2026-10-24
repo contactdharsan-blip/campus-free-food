@@ -38,9 +38,9 @@ Do not use it for dining hall menus, meal plans or restaurants.
 2. **Window and time zone.**
    - Use the time the student asked about: the rest of today is `--days 0.5`, today and tomorrow is
      `--days 2`, "this week" is `--days 7`. Default to `--days 2`.
-   - Pass the student's local date and time as `--now` (for example `2026-10-24T13:00`) and their time
-     zone as `--tz` (for example `America/Chicago`). Don't use the sandbox clock; it may be in another
-     time zone.
+   - Pass the student's local date and time with its UTC offset as `--now` (for example
+     `2026-10-24T13:00-07:00`), and their time zone as `--tz` (for example `America/Chicago`). Don't use
+     the sandbox clock; it may be in another time zone.
 3. **Busy times.**
    - Read the student's Google Calendar events for the window, plus their class times from Canvas if
      Canvas is connected.

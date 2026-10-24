@@ -259,9 +259,9 @@ def main(argv: Optional[list[str]] = None) -> int:
     except ValueError:
         emit({"error": "--now must look like 2026-10-24T13:00"})
         return 2
-    tz = platforms.zone(me.tz) if me.tz else (now.tzinfo or None)
+    tz = (platforms.zone(me.tz) if me.tz else None) or now.tzinfo  # an offset in --now works without tz data
     if tz is None:
-        emit({"error": "pass --tz with the student's time zone, e.g. America/Phoenix"})
+        emit({"error": "pass --tz (e.g. America/Phoenix), or put the UTC offset in --now (e.g. 2026-10-24T13:00-07:00)"})
         return 2
     me.tz = tz
     me.now = now.replace(tzinfo=tz) if now.tzinfo is None else now.astimezone(tz)

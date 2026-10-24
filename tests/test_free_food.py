@@ -165,7 +165,8 @@ class Localist(unittest.TestCase):
 
 class ICal(unittest.TestCase):
     def setUp(self):
-        raw = (FIX / "uw.ics").read_text(newline="")
+        with open(FIX / "uw.ics", newline="") as fh:
+            raw = fh.read()
         self.events = pf.ics("https://www.trumba.com/x.ics", datetime(2026, 10, 20, tzinfo=UTC),
                              datetime(2026, 11, 5, tzinfo=UTC), lambda u: raw)
 
