@@ -1,0 +1,135 @@
+[
+ {
+  "id": "900001",
+  "name": "Pizza and Pitches",
+  "host": "Sun Devil Entrepreneurs (example)",
+  "category": "Social",
+  "tags": [
+   "Social",
+   "In-Person Event",
+   "Tempe Campus",
+   "Undergraduate",
+   "Graduate"
+  ],
+  "start": "2026-10-26T12:00:00-07:00",
+  "end": "2026-10-26T13:00:00-07:00",
+  "location": "Memorial Union 202 (example)",
+  "price": "FREE",
+  "description": "Hear three student founders pitch their ideas. Free pizza will be provided for everyone who comes! Open to all students.",
+  "url": "https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900001",
+  "restricted": false,
+  "audience": [
+   "undergrad",
+   "grad"
+  ],
+  "campus": "tempe"
+ },
+ {
+  "id": "900002",
+  "name": "Taco Tuesday Study Hall",
+  "host": "Engineering Tutoring (example)",
+  "category": "Workshop",
+  "tags": [
+   "Workshop",
+   "In-Person Event",
+   "Tempe Campus",
+   "Undergraduate"
+  ],
+  "start": "2026-10-27T15:00:00-07:00",
+  "end": "2026-10-27T17:00:00-07:00",
+  "location": "Noble Library 104 (example)",
+  "price": "FREE",
+  "description": "Drop in for homework help with tutors. Tacos are served at 4 pm while they last.",
+  "spots_left": 40,
+  "url": "https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900002",
+  "restricted": false,
+  "audience": [
+   "undergrad"
+  ],
+  "campus": "tempe"
+ },
+ {
+  "id": "900003",
+  "name": "Honors Halloween Social",
+  "host": "Barrett, The Honors College (example)",
+  "category": "Social",
+  "tags": [
+   "Social",
+   "In-Person Event",
+   "Tempe Campus"
+  ],
+  "start": "2026-10-27T19:00:00-07:00",
+  "end": "2026-10-27T21:00:00-07:00",
+  "location": "Barrett Complex Courtyard (example)",
+  "price": "FREE",
+  "description": "Costumes, candy and cider for Barrett students.",
+  "url": "https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900003",
+  "restricted": true,
+  "audience": [],
+  "campus": "tempe"
+ },
+ {
+  "id": "900004",
+  "name": "Canned Food Drive",
+  "host": "Community Service Club (example)",
+  "category": "Community Service",
+  "tags": [
+   "Community Service",
+   "Tempe Campus"
+  ],
+  "start": "2026-10-26T09:00:00-07:00",
+  "end": "2026-10-26T17:00:00-07:00",
+  "location": "Student Pavilion (example)",
+  "price": "FREE",
+  "description": "Donate canned food and non-perishable items for local families.",
+  "url": "https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900004",
+  "restricted": false,
+  "audience": [],
+  "campus": "tempe"
+ },
+ {
+  "id": "900005",
+  "name": "Grad Mixer",
+  "host": "Graduate Student Association (example)",
+  "category": "Social",
+  "tags": [
+   "Social",
+   "Graduate",
+   "Tempe Campus"
+  ],
+  "start": "2026-10-26T17:00:00-07:00",
+  "end": "2026-10-26T19:00:00-07:00",
+  "location": "Graduate Lounge (example)",
+  "price": "FREE",
+  "description": "Light refreshments and networking for graduate students.",
+  "url": "https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900005",
+  "restricted": false,
+  "audience": [
+   "grad"
+  ],
+  "campus": "tempe"
+ },
+ {
+  "id": "900006",
+  "name": "Downtown Donut Day",
+  "host": "Watts College (example)",
+  "category": "Social",
+  "tags": [
+   "Social",
+   "In-Person Event",
+   "Downtown Phoenix Campus",
+   "Undergraduate"
+  ],
+  "start": "2026-10-28T09:00:00-07:00",
+  "end": "2026-10-28T10:30:00-07:00",
+  "location": "UCENT Lobby (example)",
+  "price": "FREE",
+  "description": "Grab free donuts and coffee on your way to class.",
+  "url": "https://sundevilcentral.eoss.asu.edu/rsvp_boot?id=900006",
+  "restricted": false,
+  "audience": [
+   "undergrad"
+  ],
+  "campus": "downtown"
+ }
+]

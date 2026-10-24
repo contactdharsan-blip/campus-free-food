@@ -1,0 +1,292 @@
+BEGIN:VCALENDAR
+PRODID:-//Trumba Corporation//Trumba Calendar Services 0.11.26223//EN
+VERSION:2.0
+CALSCALE:GREGORIAN
+X-WR-CALNAME:UW Seattle Campus Events
+X-WR-TIMEZONE:America/Los_Angeles
+METHOD:PUBLISH
+BEGIN:VTIMEZONE
+TZID:America/Los_Angeles
+BEGIN:STANDARD
+TZOFFSETFROM:-0700
+TZOFFSETTO:-0800
+TZNAME:PST
+DTSTART:20071104T020000
+RRULE:FREQ=YEARLY;BYMONTH=11;BYDAY=1SU
+END:STANDARD
+BEGIN:DAYLIGHT
+TZOFFSETFROM:-0800
+TZOFFSETTO:-0700
+TZNAME:PDT
+DTSTART:20070311T020000
+RRULE:FREQ=YEARLY;BYMONTH=3;BYDAY=2SU
+END:DAYLIGHT
+END:VTIMEZONE
+BEGIN:VEVENT
+SUMMARY:Wind Ensemble Chamber Winds
+LOCATION:Floyd and Delores Jones Playhouse (PHT)
+DTSTART;TZID=America/Los_Angeles:20261025T133000
+DTEND;TZID=America/Los_Angeles:20261025T133000
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+URL:https://music.washington.edu/events/2026-10-25/wind-ensemble-chamber
+ -winds
+X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Generic UW Even
+ t
+X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Sin
+ gle day event
+X-TRUMBA-CUSTOMFIELD;NAME="Campus location";ID=30032;TYPE=CustomAsset:Fl
+ oyd and Delores Jones Playhouse (PHT)
+X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
+ ne:dos@uw.edu
+X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Perfor
+ mances
+X-TRUMBA-CUSTOMFIELD;NAME="Event image";ID=40;TYPE=Image:https://www.tru
+ mba.com/i/DgB63bC-TscZWTE7IPXXNM%2Ab.jpg
+X-TRUMBA-CUSTOMFIELD;NAME="Event sponsors";ID=30383;TYPE=MultiLine:UW Mu
+ sic\; www.music.washington.edu
+X-TRUMBA-CUSTOMFIELD;NAME="Facebook";ID=30202;TYPE=Url:http://facebook.c
+ om/UWMusic
+DTSTAMP:20260903T110650Z
+DESCRIPTION:Event interval: Single day event\nCampus location: Floyd and
+  Delores Jones Playhouse (PHT)\nAccessibility Contact: dos@uw.edu\nEvent
+  Types: Performances\nEvent sponsors: UW Music\; www.music.washington.ed
+ u\nFacebook: http://facebook.com/UWMusic\nLink: https://music.washington
+ .edu/events/2026-10-25/wind-ensemble-chamber-winds\n\nMembers of the UW 
+ Wind Ensemble (Christopher Vongvithaymathakul\, director) perform music 
+ by W.A. Mozart\, Claude Arrieu\, Joan Tower and others. With Yuman Wu an
+ d Joshua Michael Smith\, assistant conductors. \n\n\nFREE admission
+CATEGORIES:UW Seattle Campus Events
+IMAGE;VALUE=URI:https://www.trumba.com/i/DgB63bC-TscZWTE7IPXXNM%2Ab.jpg
+UID:http://uid.trumba.com/event/207730594
+X-TRUMBA-LINK:https://www.washington.edu/calendar/?trumbaEmbed=view%3Dev
+ ent%26eventid%3D207730594
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Wheelchair Basketball Open Practices
+LOCATION:Intramural Activities Building (IMA)
+DTSTART;TZID=America/Los_Angeles:20261025T180000
+DTEND;TZID=America/Los_Angeles:20261025T200000
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+URL:https://www.washington.edu/ima/intramurals/adaptive-sports-recreatio
+ n/our-program/#recruits
+X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Generic UW Even
+ t
+X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Sin
+ gle day event
+X-TRUMBA-CUSTOMFIELD;NAME="Campus location";ID=30032;TYPE=CustomAsset:In
+ tramural Activities Building (IMA)
+X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
+ ne:kec1991@uw.edu
+X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Athlet
+ ics\,Diversity Equity Inclusion\,Student Activities
+X-TRUMBA-CUSTOMFIELD;NAME="Event sponsors";ID=30383;TYPE=MultiLine:UW Ad
+ aptive Sports and Recreation: \nhttps://www.washington.edu/ima/intramura
+ ls/adaptive-sports-recreation/
+X-TRUMBA-CUSTOMFIELD;NAME="Target Audience";ID=42285;TYPE=SingleLine:UW 
+ students w/ disabilities from all campuses\, able-bodied students who wa
+ nt to play and support
+DTSTAMP:20261008T090536Z
+DESCRIPTION:Event interval: Single day event\nCampus location: Intramura
+ l Activities Building (IMA)\nAccessibility Contact: kec1991@uw.edu\nEven
+ t Types: Athletics\,Diversity Equity Inclusion\,Student Activities\nEven
+ t sponsors: <a href="https://www.washington.edu/ima/intramurals/adaptive
+ -sports-recreation/" target="_blank" dir="ltr">UW Adaptive Sports and Re
+ creation</a>\nTarget Audience: UW students w/ disabilities from all camp
+ uses\, able-bodied students who want to play and support\nLink: https://
+ www.washington.edu/ima/intramurals/adaptive-sports-recreation/our-progra
+ m/#recruits\n\nAfter serving 40+ players in our inaugural Intramurals le
+ ague last spring\, we are expanding to add a travel team that will play 
+ against other schools in the NWBA. We've got former Team USA coaches on 
+ staff who are ready to support any interested athletes!\n\nWe are curren
+ tly recruiting players -- UW students with disabilities any additional a
+ ble-bodied students who want to play and support -- for open practices s
+ tarting Sunday\, 10/11.\n - Sport chairs provided all season long - we o
+ wn 12 RGK All Courts.\n - All levels and abilities are welcome. No exper
+ ience necessary.\n - Seattle\, Tacoma and Bothell students are all welco
+ me\nSignup:\nFill out the prospective athlete form: \nhttps://www.washin
+ gton.edu/ima/intramurals/adaptive-sports-recreation/our-program/#recruit
+ s on our website.
+CATEGORIES:UW Seattle Campus Events
+UID:http://uid.trumba.com/event/210832576
+X-TRUMBA-LINK:https://www.washington.edu/calendar/?trumbaEmbed=view%3Dev
+ ent%26eventid%3D210832576
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:RIICC 2026 | Team Registration Closes
+DTSTART;VALUE=DATE:20261026
+DTEND;VALUE=DATE:20261027
+X-MICROSOFT-CDO-ALLDAYEVENT:TRUE
+URL:https://foster.uw.edu/centers/gbc/competitions/#riicc
+X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Fosters School 
+ of Business
+X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Ong
+ oing event
+X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
+ ne:uwciber@uw.edu
+X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Academ
+ ics\,Conferences\,Special Events
+X-TRUMBA-CUSTOMFIELD;NAME="Event sponsors";ID=30383;TYPE=MultiLine:Globa
+ l Business Center: \nhttps://foster.uw.edu/centers/gbc/undergraduate/
+DTSTAMP:20260925T155402Z
+DESCRIPTION:Event interval: Ongoing event\nAccessibility Contact: uwcibe
+ r@uw.edu\nEvent Types: Academics\,Conferences\,Special Events\nEvent spo
+ nsors: <a href="https://foster.uw.edu/centers/gbc/undergraduate/" target
+ ="_blank" dir="ltr">Global Business Center</a>\nLink: https://foster.uw.
+ edu/centers/gbc/competitions/#riicc\n\nRIICC 2026 - Team Registration Cl
+ oses\nCompete in the Foster School of Business\, Global Business Center'
+ s (GBC) annual Russell Investments International Case Competition (RIICC
+ ): \nhttps://foster.uw.edu/centers/gbc/competitions/#riicc on November 1
+ 4\, 2026!\n\nTeams of four UW undergraduate students (with at least one 
+ Foster major) will tackle a global business challenge over 72 hours. Tea
+ ms receive the case on November 10 and present their recommendations to 
+ Seattle business professionals on Saturday\, November 14\, 2026.\n\nRIIC
+ C is a great introduction to case competitions\, featuring a global busi
+ ness theme\, 72 hours to develop a solution\, a case competition prep wo
+ rkshop\, opportunities to meet with coaches before the final presentatio
+ n\, and the chance to network with students and professionals. Cash priz
+ es are also available for top teams!\n\nTeam Registration Closes: Octobe
+ r 26\, 2026\nOpen to all UW undergraduate students on the UW Seattle cam
+ pus.
+CATEGORIES:UW Seattle Campus Events
+UID:http://uid.trumba.com/event/209767218
+X-TRUMBA-LINK:https://www.washington.edu/calendar/?trumbaEmbed=view%3Dev
+ ent%26eventid%3D209767218
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Christopher Rea | Invasion of the Swine:  Adventures in translat
+ ing Zhang Guixing’s Epic Wartime Novel The Crossing of the Boars
+LOCATION:Thomson Hall (THO)
+DTSTART;TZID=America/Los_Angeles:20261026T103000
+DTEND;TZID=America/Los_Angeles:20261026T120000
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Generic UW Even
+ t
+X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Sin
+ gle day event
+X-TRUMBA-CUSTOMFIELD;NAME="Campus location";ID=30032;TYPE=CustomAsset:Th
+ omson Hall (THO)
+X-TRUMBA-CUSTOMFIELD;NAME="Campus room";ID=28429;TYPE=SingleLine:THO 317
+X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
+ ne:csead@uw.edu
+X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Lectur
+ es/Seminars
+X-TRUMBA-CUSTOMFIELD;NAME="Event image";ID=40;TYPE=Image:https://www.tru
+ mba.com/i/DgDejG2wcufs2HcAAC3DzctO.jpg
+X-TRUMBA-CUSTOMFIELD;NAME="Event sponsors";ID=30383;TYPE=MultiLine:Co-sp
+ onsored by UW Taiwan Studies Program
+DTSTAMP:20260921T084900Z
+DESCRIPTION:Event interval: Single day event\nCampus location: Thomson H
+ all (THO)\nCampus room: THO 317\nAccessibility Contact: csead@uw.edu\nEv
+ ent Types: Lectures/Seminars\nEvent sponsors: Co-sponsored by UW Taiwan 
+ Studies Program\n\nFree and open to all. At the Jackson School\, opportu
+ nities and events are open to all eligible persons regardless of race\, 
+ sex or other identity. \n\nMalaysian-Taiwanese novelist Chang Kuei-hsing
+  (b. 1956\, publishes as Zhang Guixing) has spent decades doing for trop
+ ical Asia what Gabriel García Márquez did for Latin America: enchanting 
+ a land with a violent history. Set in a forgotten theater of World War I
+ I\, The Crossing of the Boars (Ye zhu du he\, 2018\, rev. 2024) focuses 
+ on a small settler community on the border of the Bornean jungle that fi
+ nds itself overrun\, first by wild pigs and then by Japanese invaders. R
+ eleased in English this year\, Zhang’s novel dazzles with a labyrinthine
+  mystery enmeshed in an ecological fantasia: ghostly colonists mating li
+ ke guppies\, macaques mirroring Japanese war criminals\, bomber storks\,
+  ominous urinating porcupines\, wildfire-igniting squirrels\, man-eating
+  crocodiles\, and herd upon herd of insatiable bearded pigs.\n\nChristop
+ her Rea discusses how he and Julie M. Wang rendered this award-winning n
+ ovel into English\, including the process of researching a historical ep
+ ic of bestial violence also filled with Malaysian vampires\, Japanese de
+ mons\, and Bornean bog monsters. In doing so\, he offers answers to a mo
+ re general question: When faced with a challenging text\, how can a tran
+ slator get out alive?\n \nAbout the speaker\nChristopher Rea: \nhttps://
+ asia.ubc.ca/profile/christopher-rea/ is professor of modern Chinese lite
+ rature at the University of British Columbia. His book-length translatio
+ ns from Chinese into English include China’s Chaplin: \nhttps://cornellp
+ ress.cornell.edu/book/9781501787508/chinas-chaplin/#bookTabs=1: Comic St
+ ories and Farces by Xu Zhuodai (Cornell\, open access: \nhttps://cornell
+ press.cornell.edu/book/9781501787508/chinas-chaplin/)\, The Book of Swin
+ dles: \nhttps://cup.columbia.edu/book/the-book-of-swindles/9780231178624
+ / and More Swindles from the Late Ming: \nhttps://cup.columbia.edu/book/
+ more-swindles-from-the-late-ming/9780231212458/ (both with Bruce Rusk\, 
+ Columbia)\, Humans\, Beasts\, and Ghosts: \nhttps://cup.columbia.edu/boo
+ k/humans-beasts-and-ghosts/9780231152754/ by Qian Zhongshu (Columbia)\, 
+ and Zhang Guixing’s The Crossing of the Boars: \nhttps://cup.columbia.ed
+ u/book/the-crossing-of-the-boars/9780231217668/: A Novel (with Julie M. 
+ Wang\, Columbia\, 2026). He is author of The Age of Irreverence (2015) a
+ nd Chinese Film Classics\, 1922-1949 (2021)\, and co-author (with Tom Mu
+ llaney) of the bestselling guide Where Research Begins (2022). He is als
+ o the founding director and lead translator of the Chinese Film Classics
+  Project: \nhttps://chinesefilmclassics.org/films/\, the world’s largest
+  free online collection of early Chinese films with English subtitles.
+CATEGORIES:UW Seattle Campus Events
+IMAGE;VALUE=URI:https://www.trumba.com/i/DgDejG2wcufs2HcAAC3DzctO.jpg
+UID:http://uid.trumba.com/event/209406187
+X-TRUMBA-LINK:https://www.washington.edu/calendar/?trumbaEmbed=view%3Dev
+ ent%26eventid%3D209406187
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Teaching Technologies Office Hours
+LOCATION:On Zoom
+DTSTART;TZID=America/Los_Angeles:20261026T110000
+DTEND;TZID=America/Los_Angeles:20261026T120000
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Generic UW Even
+ t
+X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Ong
+ oing event
+X-TRUMBA-CUSTOMFIELD;NAME="Online Meeting Link";ID=54756;TYPE=Url:https:
+ //washington.zoom.us/j/95563909728
+X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
+ ne:Accessibility questions or requests for this workshop should be direc
+ ted to help@uw.edu with “Learning Technologies Workshops accessibility” 
+ in the subject line.
+X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Worksh
+ ops
+X-TRUMBA-CUSTOMFIELD;NAME="Event sponsors";ID=30383;TYPE=MultiLine:UW Le
+ arning Technologies
+DTSTAMP:20260526T141142Z
+DESCRIPTION:Event interval: Ongoing event\nOnline Meeting Link: https://
+ washington.zoom.us/j/95563909728\nAccessibility Contact: Accessibility q
+ uestions or requests for this workshop should be directed to help@uw.edu
+  with “Learning Technologies Workshops accessibility” in the subject lin
+ e.\nEvent Types: Workshops\nEvent sponsors: UW Learning Technologies\n&n
+ bsp\;\n\nBring your questions about using Canvas\, Panopto\, and Zoom to
+  teach at UW and get answers to your technical and pedagogical questions
+  via Zoom.
+CATEGORIES:UW Seattle Campus Events
+UID:http://uid.trumba.com/event/204112822
+X-TRUMBA-LINK:https://www.washington.edu/calendar/?trumbaEmbed=view%3Dev
+ ent%26eventid%3D204112822
+END:VEVENT
+BEGIN:VEVENT
+SUMMARY:Daily 15 Minute Movement Break - Yoga and Fitness
+DTSTART;TZID=America/Los_Angeles:20261026T110000
+DTEND;TZID=America/Los_Angeles:20261026T111500
+X-MICROSOFT-CDO-ALLDAYEVENT:FALSE
+URL:https://wholeu.admin.washington.edu/uwnetid/twuext/EventDetail.aspx?
+ regid=&eventid=1160&eventsessionid=
+X-TRUMBA-CUSTOMFIELD;NAME="Event Type";ID=21;TYPE=number:Generic UW Even
+ t
+X-TRUMBA-CUSTOMFIELD;NAME="Event interval";ID=30051;TYPE=CustomAsset:Ong
+ oing event
+X-TRUMBA-CUSTOMFIELD;NAME="Accessibility Contact";ID=62969;TYPE=SingleLi
+ ne:murphyh4@uw.edu
+X-TRUMBA-CUSTOMFIELD;NAME="Event Types";ID=30073;TYPE=CustomAsset:Not Sp
+ ecified
+DTSTAMP:20261018T023118Z
+DESCRIPTION:Event interval: Ongoing event\nAccessibility Contact: murphy
+ h4@uw.edu\nEvent Types: Not Specified\nLink: https://wholeu.admin.washin
+ gton.edu/uwnetid/twuext/EventDetail.aspx?regid=&eventid=1160&eventsessio
+ nid=\n\nThese mini movement sessions are great for re-energizing your da
+ y. Sessions are open to all levels and will include a mix of strength tr
+ aining\, yoga\, and cardio.\n\nJoin daily or when you can:\n	 - Mondays 
+ - 15-minute fitness and strength break	\n - Tuesdays - 15-minute yoga br
+ eak	\n - Wednesday - Thursday - 15-minute fitness and strength break 	\n
+  - Fridays - 15-minute guided dance break\nJoin in to start your work st
+ rong! No equipment needed. You may want a towel or yoga mat for laying o
+ n the floor.\n\nLearn more and register on The Whole U website.
+CATEGORIES:UW Seattle Campus Events
+UID:http://uid.trumba.com/event/178391708
+X-TRUMBA-LINK:https://www.washington.edu/calendar/?trumbaEmbed=view%3Dev
+ ent%26eventid%3D178391708
+END:VEVENT
+END:VCALENDAR
